@@ -10,18 +10,13 @@ namespace luu_text_file
 {
     internal class LuuFiletext
     {
-        public static bool LuuFile(List<SinhVien> dssv , string path)
+        public static bool LuuFile(SinhVien sv , string path)
         {
             try
             {
                 StreamWriter sw = new StreamWriter(path, true, Encoding.UTF8);
-                
-                foreach(SinhVien sv in dssv)
-                {
-                    string info = sv.mssv.ToString() + ";" + sv.ten + ";" + sv.ngaysinh.ToString() + ";" + sv.dtb.ToString();
-                    sw.WriteLine(info);
-                   
-                }
+                string info = sv.mssv.ToString() + ";" + sv.ten + ";" + sv.ngaysinh.ToString() + ";" + sv.dtb.ToString();
+                sw.WriteLine(info);
                 sw.Close();
                 return true;
             }
@@ -46,11 +41,13 @@ namespace luu_text_file
                             sv.ten = arr[1].Trim();
                             sv.ngaysinh = DateTime.Parse(arr[2].Trim());
                             sv.dtb = float.Parse(arr[3].Trim());
+                            sr.Close();
+                            return true;
                         }
                     }
                 }
                 sr.Close();
-                return true;
+                return false;
             }
             catch (Exception ex)
             {

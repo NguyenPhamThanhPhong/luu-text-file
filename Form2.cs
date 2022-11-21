@@ -17,9 +17,10 @@ namespace luu_text_file
         {
             InitializeComponent();
         }
+        public SinhVien sv = new SinhVien();
         private void button_tim_kiem_Click(object sender, EventArgs e)
         {
-            SinhVien sv = new SinhVien();
+
             sv.mssv = int.Parse(textbox_mssv_timkiem.Text);
             try
             {
@@ -32,7 +33,7 @@ namespace luu_text_file
                     label_output_dtb.Text = sv.dtb.ToString();
                     if(MessageBox.Show("tim kiem thanh cong. Ban co muon cap nhat", "Thong bao", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        Form3 f = new Form3();
+                        Form3 f = new Form3(this);
                         this.Hide();
                         f.ShowDialog();
                         this.Show();

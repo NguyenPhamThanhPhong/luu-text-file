@@ -20,18 +20,26 @@ namespace luu_text_file
         private void button2_Click(object sender, EventArgs e)
         {
             List<SinhVien> dssv = new List<SinhVien>();
+            string path = Application.StartupPath + "\\csdl.txt";
+            LuuFiletext.Load_Du_Lieu_Len(out dssv, path);
             SinhVien sv = new SinhVien();
             sv.mssv = int.Parse(textbox_mssv_nhap.Text);
             sv.ten = textbox_hoten_nhap.Text;
             sv.ngaysinh = dateTimePicker_ngaysinh_nhap.Value;
-            //debug_text.Text = dateTimePicker_ngaysinh_nhap.Value.ToString();
             sv.dtb = float.Parse(textbox_dtb_nhap.Text);
-            dssv.Add(sv);
+            foreach (SinhVien sv1 in dssv)
+            {
+                if(sv1.so_sanh_mssv(sv) == true)
+                {
+                    MessageBox.Show("đã tồn tại, vui lòng nhập mssv khác");
+                    return;
+                }
+            }
             MessageBox.Show(sv.ToString());
             try
             {
-                string path = Application.StartupPath + "\\csdl.txt";
-                bool check = LuuFiletext.LuuFile(dssv, path);
+
+                bool check = LuuFiletext.LuuFile(sv, path);
                 if(check == true)
                 {
                     MessageBox.Show("thêm mới thành công");

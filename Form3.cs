@@ -13,22 +13,27 @@ namespace luu_text_file
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        form_tim_kiem FF;
+        public Form3(form_tim_kiem ff)
         {
             InitializeComponent();
+            this.FF = ff;
         }
         private void button_CapNhat_Click(object sender, EventArgs e)
         {
-            List<SinhVien> dssv;
+            List<SinhVien> dssv = new List<SinhVien>();
             string path = Application.StartupPath + "\\csdl.txt";
 
-            if (LuuFiletext.Load_Du_Lieu_Len(out dssv,path))
+            if (LuuFiletext.Load_Du_Lieu_Len(out dssv, path))
             {
-                foreach(SinhVien sv in dssv.ToList())
+                foreach (SinhVien sv1 in dssv.ToList())
                 {
-                    if (sv.mssv == int.Parse(textBox_mssv_CapNhat.Text))
+                    if (this.FF.sv.mssv == sv1.mssv)
                     {
-                        dssv.Remove(sv);
+                        sv1.mssv = int.Parse(textBox_mssv_CapNhat.Text);
+                        sv1.ten = textbox_Hoten_CapNhat.Text.Trim();
+                        sv1.ngaysinh = dateTimePicker_NgaySinh_CapNhat.Value;
+                        sv1.dtb = float.Parse(TextBox_dtb_CapNhat.Text);
                     }
                 }
             }
@@ -36,15 +41,9 @@ namespace luu_text_file
             {
                 MessageBox.Show("khong tim thay");
             }
-            
+
             try
             {
-                SinhVien sv1 = new SinhVien();
-                sv1.mssv = int.Parse(textBox_mssv_CapNhat.Text);
-                sv1.ten = textbox_Hoten_CapNhat.Text;
-                sv1.ngaysinh = dateTimePicker_NgaySinh_CapNhat.Value;
-                sv1.dtb = float.Parse(TextBox_dtb_CapNhat.Text);
-                dssv.Add(sv1);
                 bool check = LuuFiletext.UpdateDuLieu(dssv, path);
                 if (check == true)
                 {
