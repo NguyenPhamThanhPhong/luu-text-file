@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "luu text file", "luu text file.csproj", "{B77B8828-6F6A-44F6-A55F-A5B24E19B61B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B77B8828-6F6A-44F6-A55F-A5B24E19B61B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77B8828-6F6A-44F6-A55F-A5B24E19B61B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77B8828-6F6A-44F6-A55F-A5B24E19B61B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77B8828-6F6A-44F6-A55F-A5B24E19B61B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC07901E-4EE9-413E-A084-CA4C7B3B66AB}
+	EndGlobalSection
+EndGlobal
